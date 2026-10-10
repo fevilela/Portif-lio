@@ -44,8 +44,19 @@ a{color:inherit}
 h1{font-weight:300;font-size:clamp(36px,6vw,68px);line-height:1.04;letter-spacing:-.03em;margin:14px 0 0;max-width:15ch;text-wrap:balance}
 h1 em{font-style:normal;color:var(--agua)}
 .lede{color:var(--muted);max-width:52ch;margin:20px 0 0;font-size:17px}
-.kanji{font-family:var(--jp);font-size:clamp(64px,10vw,128px);line-height:1;color:var(--ink);opacity:.9;writing-mode:vertical-rl;letter-spacing:.05em}
-.kanji small{display:block;font-family:var(--sans);writing-mode:horizontal-tb;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:8px}
+/* 流れ — proposta A "Pincel": cada caractere é escrito de cima para baixo; linha d'água acompanha; ciclo de 7s */
+.kanji{display:flex;align-items:center;gap:clamp(12px,1.6vw,20px);color:var(--ink)}
+.kanji small{align-self:flex-start;margin-top:.9em;font-family:var(--sans);font-size:11px;font-weight:600;letter-spacing:.2em;color:var(--muted);white-space:nowrap}
+.kanji .chars{display:flex;flex-direction:column;align-items:center;font-family:var(--jp);font-size:clamp(64px,10vw,128px);line-height:1.08;opacity:.92}
+.kanji .chars span{display:block;clip-path:inset(0 0 100% 0);animation:pz-write 7s cubic-bezier(.65,0,.35,1) infinite}
+.kanji .chars span+span{animation-name:pz-write2}
+.kanji .trail{align-self:stretch;width:3px;border-radius:9999px;background:var(--agua);transform-origin:top;transform:scaleY(0);animation:pz-trail 7s cubic-bezier(.65,0,.35,1) infinite}
+.kanji small{opacity:0;animation:pz-label 7s ease infinite}
+@keyframes pz-write{0%{clip-path:inset(0 0 100% 0);opacity:1}18%,84%{clip-path:inset(0 0 0 0);opacity:1}94%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes pz-write2{0%,16%{clip-path:inset(0 0 100% 0);opacity:1}36%,84%{clip-path:inset(0 0 0 0);opacity:1}94%,100%{clip-path:inset(0 0 0 0);opacity:0}}
+@keyframes pz-trail{0%{transform:scaleY(0);opacity:1}38%,84%{transform:scaleY(1);opacity:1}94%,100%{transform:scaleY(1);opacity:0}}
+@keyframes pz-label{0%,34%{opacity:0;transform:translateX(-8px)}46%,84%{opacity:1;transform:none}94%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.kanji .chars span,.kanji .trail,.kanji small{animation:none;clip-path:none;transform:none;opacity:1}}
 /* filters */
 .filters{display:flex;flex-wrap:wrap;gap:8px;padding-block:8px 8px;border-top:1px solid var(--line);padding-top:24px}
 .filters button{font:500 14px var(--sans);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}
@@ -166,7 +177,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       <h1>Sites, sistemas e agentes de IA que fazem negócios <em>fluírem</em>.</h1>
       <p class="lede">Uma vitrine do que a Nagare já construiu para negócios reais: de um personal trainer a um sistema fiscal com emissão de nota e PDV.</p>
     </div>
-    <div class="kanji" aria-hidden="true">流れ<small>NAGARE · FLUXO</small></div>
+    <div class="kanji" aria-hidden="true"><small>NAGARE · FLUXO</small><div class="chars"><span>流</span><span>れ</span></div><i class="trail"></i></div>
   </section>
 
   <nav class="filters" aria-label="Filtrar projetos">
