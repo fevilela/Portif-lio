@@ -26,6 +26,7 @@ no Render (Static Site, publish directory `.`) ou na Vercel/Netlify.
 
 ## Observações
 
-- Tok Veículos: conversa de WhatsApp simulada, com carros fictícios.
+- Agente de vendas (veículos): conversa de WhatsApp simulada, com carros fictícios.
 - Sistema para petshop: tela de login ilustrativa.
-- Capturas de Studio Thainá Souza e Coliseu usam a foto e a tela de login criadas para a vitrine.
+- Capturas do studio de beleza e do Coliseu usam a foto e a tela de login criadas para a vitrine.
+- Nomes de clientes (personal trainer, revenda de veículos e studio de beleza) foram omitidos a pedido; links sob consulta.

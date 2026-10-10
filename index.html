@@ -93,7 +93,7 @@ h2{font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spaci
 .btn:hover{background:var(--agua);color:var(--sumi)}
 .btn svg{width:14px;height:14px}
 .note{font-size:12px;color:var(--muted)}
-/* Tok chat mock */
+/* chat mock (agente) */
 .chatwrap{display:flex;justify-content:center;padding:0!important}
 .chatphone{position:relative;width:min(330px,100%);background:var(--bezel);border-radius:40px;padding:10px;box-shadow:var(--shadow)}
 .chat{border-radius:32px;overflow:hidden;background:#0B141A;font-size:13px;line-height:1.45;color:#E9EDEF;display:flex;flex-direction:column;height:600px}
@@ -189,18 +189,18 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
 
   <main class="list">
 
-    <article class="proj" data-cat="site" id="octavio">
+    <article class="proj" data-cat="site" id="personal">
       <div class="media">
-        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>octavio-1pi1.onrender.com</b></div><img src="img/octavio-desk.jpg" alt="Página inicial do site de Octávio Henrique, treinador: 'Treino pensado para você, não para a média'"></div>
-        <div class="phone"><img src="img/octavio-mob.jpg" alt="Versão para celular do site de Octávio Henrique"></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>site do cliente</b></div><img src="img/personal-desk.jpg" alt="Página inicial de um site para personal trainer: 'Treino pensado para você, não para a média'"></div>
+        <div class="phone"><img src="img/personal-mob.jpg" alt="Versão para celular do site do personal trainer"></div>
       </div>
       <div class="info">
         <div class="tags"><span class="tag">Site</span></div>
         <div class="sector">Portfólio</div>
-        <h2>Octávio Henrique</h2>
+        <h2>Personal Trainer</h2>
         <p class="desc">Site-portfólio para um treinador apresentar o método e os resultados, e levar o visitante direto para uma conversa no WhatsApp.</p>
         <ul class="feat"><li>Página única e responsiva</li><li>Botão direto para o WhatsApp</li><li>Planos de treino e método</li><li>Prova social e resultados</li></ul>
-        <div class="actions"><a class="btn" href="https://octavio-1pi1.onrender.com/" target="_blank" rel="noopener">Ver site <svg><use href="#arrow"/></svg></a></div>
+        <div class="actions"><span class="note">Projeto no ar. Link disponível sob consulta.</span></div>
       </div>
     </article>
 
@@ -219,15 +219,15 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       </div>
     </article>
 
-    <article class="proj" data-cat="agente" id="tok">
+    <article class="proj" data-cat="agente" id="veiculos">
       <div class="media chatwrap">
         <div class="chatphone">
           <span class="demo-flag">Simulação · dados fictícios</span>
-          <div class="chat" role="img" aria-label="Simulação de conversa no WhatsApp: cliente pede um SUV automático até 120 mil e o agente da Tok Veículos envia três opções disponíveis.">
-            <div class="chat-h"><div class="av">TOK</div><div><b>Tok Veículos</b><small>online</small></div></div>
+          <div class="chat" role="img" aria-label="Simulação de conversa no WhatsApp: cliente pede um SUV automático até 120 mil e o agente da loja envia três opções disponíveis.">
+            <div class="chat-h"><div class="av"><svg style="width:22px;height:14px"><use href="#car"/></svg></div><div><b>Revenda de veículos</b><small>online</small></div></div>
             <div class="msgs">
               <div class="m out">Oi! Procuro um SUV automático, até R$ 120 mil.<time>14:02</time></div>
-              <div class="m in">Olá! Sou o assistente da Tok 🚗 Encontrei 3 opções disponíveis hoje na loja:<time>14:02</time></div>
+              <div class="m in">Olá! Sou o assistente virtual da loja 🚗 Encontrei 3 opções disponíveis hoje na loja:<time>14:02</time></div>
               <div class="car"><div class="ph" style="background:#24383F;color:#7CC4BA"><svg><use href="#car"/></svg></div><div><b>Jeep Compass Longitude</b><span>2021 · automático · 54 mil km</span><br><em>R$ 118.900</em></div></div>
               <div class="car"><div class="ph" style="background:#3A2F2A;color:#E8B48A"><svg><use href="#car"/></svg></div><div><b>Hyundai Creta Platinum</b><span>2022 · automático · 38 mil km</span><br><em>R$ 112.500</em></div></div>
               <div class="car"><div class="ph" style="background:#2C2F3A;color:#B9C2D6"><svg><use href="#car"/></svg></div><div><b>VW T-Cross Highline</b><span>2021 · automático · 47 mil km</span><br><em>R$ 109.900</em></div></div>
@@ -241,7 +241,7 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       <div class="info">
         <div class="tags"><span class="tag ai">Agente de IA</span><span class="tag">WhatsApp</span></div>
         <div class="sector">Veículos</div>
-        <h2>Tok Veículos</h2>
+        <h2>Agente de vendas no WhatsApp</h2>
         <p class="desc">Um agente que atende no WhatsApp a qualquer hora, entende o que o cliente procura e responde com os carros disponíveis no estoque.</p>
         <ul class="feat"><li>Atendimento 24h no WhatsApp</li><li>Busca no estoque real</li><li>Filtra por preço, tipo e câmbio</li><li>Encaminha para o vendedor</li></ul>
         <div class="actions"><span class="note">Em uso pelo cliente. A conversa ao lado é uma simulação ilustrativa.</span></div>
@@ -292,18 +292,18 @@ footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;paddin
       </div>
     </article>
 
-    <article class="proj" data-cat="site sistema" id="studio">
+    <article class="proj" data-cat="site sistema" id="noivas">
       <div class="media">
-        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>studio-lt-concept.onrender.com</b></div><img src="img/studio-desk.jpg" alt="Site de Thainá Souza, produção especializada em noivas"></div>
-        <div class="phone"><img src="img/studio-mob.jpg" alt="Site de Thainá Souza no celular"></div>
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>site do cliente</b></div><img src="img/noivas-desk.jpg" alt="Site de um studio de beleza especializado em noivas"></div>
+        <div class="phone"><img src="img/noivas-mob.jpg" alt="Site do studio de beleza no celular"></div>
       </div>
       <div class="info">
         <div class="tags"><span class="tag">Site</span><span class="tag">Sistema</span></div>
         <div class="sector">Studio de Beleza</div>
-        <h2>Studio Thainá Souza</h2>
+        <h2>Produção de noivas</h2>
         <p class="desc">Site para um studio de produção de noivas, integrado a um sistema próprio de cadastro de clientes e pedidos de orçamento.</p>
         <ul class="feat"><li>Site institucional e galeria</li><li>Pedido de orçamento online</li><li>Cadastro de clientes</li><li>Área "Minha conta"</li></ul>
-        <div class="actions"><a class="btn" href="https://studio-lt-concept.onrender.com/" target="_blank" rel="noopener">Ver site <svg><use href="#arrow"/></svg></a></div>
+        <div class="actions"><span class="note">Projeto no ar. Link disponível sob consulta.</span></div>
       </div>
     </article>
 
