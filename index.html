@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Vitrine da Nagare: sites, sistemas e agentes de IA que fazem negócios fluírem.">
+<meta property="og:title" content="Vitrine Nagare">
+<meta property="og:description" content="Sites, sistemas e agentes de IA que fazem negócios fluírem.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<title>Vitrine Nagare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400&display=swap">
+<style>
+/* Layout: vitrine editorial — cada projeto é uma "vitrine" larga (dispositivos + ficha técnica), alternando lados; capa e chamada final em Sumi. */
+:root{
+  --paper:#F3F1EC; --surface:#FFFFFF; --ink:#16181D; --muted:#5B6068; --line:#E3E0D9;
+  --agua:#3F8F86; --agua-texto:#2F6E68; --agua-clara:#7CC4BA; --sumi:#16181D; --papel:#F3F1EC;
+  --bezel:#0E0F12; --chip:#E9E6DF; --shadow:0 24px 60px -24px rgba(22,24,29,.35);
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --jp:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#16181D; --surface:#1E2128; --ink:#F3F1EC; --muted:#9AA0A6; --line:#2C3038;
+  --agua:#7CC4BA; --agua-texto:#7CC4BA; --chip:#262A31; --shadow:0 24px 60px -24px rgba(0,0,0,.7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#16181D; --surface:#1E2128; --ink:#F3F1EC; --muted:#9AA0A6; --line:#2C3038;
+  --agua:#7CC4BA; --agua-texto:#7CC4BA; --chip:#262A31; --shadow:0 24px 60px -24px rgba(0,0,0,.7); color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:24px}
+.n .c{stroke:var(--nc,var(--agua))}.n .s{stroke:var(--ns,var(--ink))}
+/* header */
+.top{display:flex;justify-content:space-between;align-items:center;padding-block:22px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-size:22px;font-weight:400;letter-spacing:-.01em}
+.brand svg{width:30px;height:30px}
+.ig{font-size:14px;font-weight:500;text-decoration:none;padding:9px 16px;border-radius:999px;border:1px solid var(--line)}
+.ig:hover{border-color:var(--ink)}
+/* hero */
+.hero{padding-block:56px 40px;display:grid;grid-template-columns:1fr auto;gap:32px;align-items:end}
+.kicker{font-size:12px;font-weight:600;letter-spacing:.22em;color:var(--agua-texto);text-transform:uppercase}
+h1{font-weight:300;font-size:clamp(36px,6vw,68px);line-height:1.04;letter-spacing:-.03em;margin:14px 0 0;max-width:15ch;text-wrap:balance}
+h1 em{font-style:normal;color:var(--agua)}
+.lede{color:var(--muted);max-width:52ch;margin:20px 0 0;font-size:17px}
+.kanji{font-family:var(--jp);font-size:clamp(64px,10vw,128px);line-height:1;color:var(--ink);opacity:.9;writing-mode:vertical-rl;letter-spacing:.05em}
+.kanji small{display:block;font-family:var(--sans);writing-mode:horizontal-tb;font-size:11px;letter-spacing:.2em;color:var(--muted);margin-top:8px}
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;padding-block:8px 8px;border-top:1px solid var(--line);padding-top:24px}
+.filters button{font:500 14px var(--sans);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:999px;padding:9px 16px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.filters button span{font-variant-numeric:tabular-nums;color:var(--muted);font-size:12px}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.filters button[aria-pressed="true"] span{color:var(--paper);opacity:.7}
+.filters button:focus-visible,.btn:focus-visible,.ig:focus-visible{outline:2px solid var(--agua);outline-offset:3px}
+/* projects */
+.list{display:flex;flex-direction:column;gap:96px;padding-block:56px 96px}
+.proj{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center}
+.proj:nth-child(even) .media{order:2}
+.media{position:relative;padding:0 48px 48px 0;min-width:0}
+.proj:nth-child(even) .media{padding:0 0 48px 48px}
+.browser{background:var(--surface);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);border:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:var(--chip);font-size:11px;color:var(--muted)}
+.bar i{width:9px;height:9px;border-radius:50%;background:var(--line);display:block}
+.bar b{font-weight:500;margin-left:10px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.browser img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top}
+.phone{position:absolute;right:0;bottom:0;width:27%;min-width:120px;max-width:200px;background:var(--bezel);border-radius:26px;padding:7px;box-shadow:var(--shadow)}
+.proj:nth-child(even) .phone{right:auto;left:0}
+.phone img{display:block;width:100%;aspect-ratio:9/19.5;object-fit:cover;object-position:top;border-radius:20px}
+.info{min-width:0}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:var(--chip);color:var(--ink)}
+.tag.ai{background:var(--agua);color:var(--sumi)}
+.sector{font-size:13px;color:var(--muted);margin-top:16px}
+h2{font-weight:400;font-size:clamp(28px,3.4vw,40px);line-height:1.1;letter-spacing:-.02em;margin:4px 0 0;text-wrap:balance}
+.desc{margin:16px 0 0;color:var(--muted);max-width:46ch}
+.feat{list-style:none;padding:0;margin:22px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:10px 20px;font-size:14px}
+.feat li{display:flex;gap:10px;align-items:baseline}
+.feat li::before{content:"";flex:none;width:12px;height:2px;background:var(--agua);transform:translateY(-4px)}
+.actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-weight:500;font-size:15px;padding:12px 20px;border-radius:999px;background:var(--ink);color:var(--paper)}
+.btn:hover{background:var(--agua);color:var(--sumi)}
+.btn svg{width:14px;height:14px}
+.note{font-size:12px;color:var(--muted)}
+/* Tok chat mock */
+.chatwrap{display:flex;justify-content:center;padding:0!important}
+.chatphone{position:relative;width:min(330px,100%);background:var(--bezel);border-radius:40px;padding:10px;box-shadow:var(--shadow)}
+.chat{border-radius:32px;overflow:hidden;background:#0B141A;font-size:13px;line-height:1.45;color:#E9EDEF;display:flex;flex-direction:column;height:600px}
+.chat-h{display:flex;align-items:center;gap:10px;padding:14px 14px 10px;background:#1F2C34}
+.av{width:34px;height:34px;border-radius:50%;background:#2A3942;display:grid;place-items:center;font-weight:700;font-size:12px;color:#7CC4BA}
+.chat-h b{display:block;font-size:14px;font-weight:600}.chat-h small{color:#8696A0;font-size:11px}
+.msgs{flex:1;padding:14px 10px;display:flex;flex-direction:column;gap:8px;overflow:hidden}
+.m{max-width:84%;padding:7px 10px 6px;border-radius:10px;position:relative}
+.m time{display:block;text-align:right;font-size:10px;color:#8696A0;margin-top:2px}
+.in{background:#1F2C34;align-self:flex-start;border-top-left-radius:2px}
+.out{background:#005C4B;align-self:flex-end;border-top-right-radius:2px}
+.car{display:flex;gap:9px;background:#1F2C34;border-radius:10px;padding:7px;align-self:flex-start;max-width:88%;align-items:center}
+.car .ph{width:62px;height:46px;border-radius:7px;flex:none;display:grid;place-items:center}
+.car .ph svg{width:44px;height:24px}
+.car b{display:block;font-size:12.5px}.car span{font-size:11px;color:#8696A0}.car em{font-style:normal;color:#7CC4BA;font-weight:600;font-size:12px}
+.typing{display:flex;gap:4px;padding:10px 12px;background:#1F2C34;border-radius:10px;align-self:flex-start}
+.typing i{width:6px;height:6px;border-radius:50%;background:#8696A0;animation:blink 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.typing i{animation:none}}
+.demo-flag{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:var(--agua);color:var(--sumi);padding:5px 12px;border-radius:999px;white-space:nowrap}
+/* Petshop login mock */
+.pet{display:grid;grid-template-columns:1fr 1fr;aspect-ratio:16/10;background:#FBF8F3;color:#2B2622}
+.pet-l{background:#2E5E4E;color:#F6EFE4;padding:8% 9%;display:flex;flex-direction:column;justify-content:space-between}
+.pet-l .pl{display:flex;align-items:center;gap:8px;font-weight:700;font-size:clamp(12px,1.4vw,16px)}
+.pet-l .pl svg{width:24px;height:24px}
+.pet-l h3{font-weight:300;font-size:clamp(16px,2.4vw,28px);line-height:1.15;margin:0}
+.pet-l ul{list-style:none;padding:0;margin:0;font-size:clamp(9px,1vw,12px);display:grid;gap:6px;opacity:.9}
+.pet-r{display:flex;flex-direction:column;justify-content:center;padding:0 12%;gap:clamp(6px,1vw,12px);font-size:clamp(9px,1vw,12px)}
+.pet-r h4{margin:0;font-size:clamp(13px,1.6vw,19px);font-weight:600}
+.pet-r label{display:block;font-weight:600;color:#6B625A}
+.pet-r .f{height:clamp(22px,3vw,36px);border:1px solid #E2D9CC;border-radius:8px;background:#fff;margin-top:4px}
+.pet-r .b{height:clamp(24px,3.2vw,38px);border-radius:8px;background:#E8833A;color:#fff;display:grid;place-items:center;font-weight:700;margin-top:4px}
+.pet-r small{text-align:center;color:#8A8077}
+/* cta */
+.cta{background:var(--sumi);border:1px solid color-mix(in srgb,var(--agua) 28%,transparent);color:var(--papel);border-radius:28px;padding:64px 48px;position:relative;overflow:hidden;margin-bottom:56px}
+.cta svg.big{position:absolute;right:-40px;top:-60px;width:420px;height:420px;opacity:.1;--nc:#7CC4BA;--ns:#F3F1EC}
+.cta h2{font-weight:300;font-size:clamp(30px,4.6vw,52px);max-width:16ch;position:relative}
+.cta h2 em{font-style:normal;color:#7CC4BA}
+.cta p{color:#B9BEC4;max-width:48ch;margin:16px 0 0;position:relative}
+.cta .actions{position:relative}
+.cta .btn{background:#F3F1EC;color:#16181D}.cta .btn:hover{background:#7CC4BA}
+.handle{font-weight:600;color:#7CC4BA;user-select:all}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-block:28px 40px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}.kanji{display:none}
+  .proj{grid-template-columns:1fr;gap:28px}
+  .proj:nth-child(even) .media{order:0;padding:0 40px 40px 0}
+  .proj:nth-child(even) .phone{left:auto;right:0}
+  .media{padding:0 40px 40px 0}
+  .list{gap:72px}
+  .cta{padding:44px 24px}
+}
+@media (max-width:480px){.feat{grid-template-columns:1fr}.wrap{padding-inline:16px}.chat{height:540px}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="N" viewBox="0 0 120 120"><path d="M30,22 C70,22 50,98 90,98" fill="none" style="stroke:var(--nc,var(--agua))" stroke-width="10.12"/><path d="M30,98 L30,22 M90,22 L90,98" fill="none" style="stroke:var(--ns,var(--ink))" stroke-width="11" stroke-linecap="round"/></symbol>
+  <symbol id="arrow" viewBox="0 0 16 16"><path d="M3 13 L13 3 M5 3 H13 V11" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="car" viewBox="0 0 44 24"><path d="M4 17 L6 10 Q7 7 10 7 L30 7 Q33 7 35 10 L39 13 Q41 14 41 17 L41 19 L3 19 L3 17 Z" fill="currentColor"/><circle cx="12" cy="19" r="3.4" fill="#0B141A"/><circle cx="32" cy="19" r="3.4" fill="#0B141A"/></symbol>
+</svg>
+
+<div class="wrap">
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Nagare"><svg class="n"><use href="#N"/></svg>nagare</a>
+    <a class="ig" href="https://instagram.com/nagare.ia" target="_blank" rel="noopener">@nagare.ia</a>
+  </header>
+
+  <section class="hero" id="top">
+    <div>
+      <div class="kicker">Portfólio · projetos no ar</div>
+      <h1>Sites, sistemas e agentes de IA que fazem negócios <em>fluírem</em>.</h1>
+      <p class="lede">Uma vitrine do que a Nagare já construiu para negócios reais: de um personal trainer a um sistema fiscal com emissão de nota e PDV.</p>
+    </div>
+    <div class="kanji" aria-hidden="true">流れ<small>NAGARE · FLUXO</small></div>
+  </section>
+
+  <nav class="filters" aria-label="Filtrar projetos">
+    <button type="button" id="f-todos" data-f="todos" aria-pressed="true">Todos <span>6</span></button>
+    <button type="button" id="f-site" data-f="site" aria-pressed="false">Sites <span>2</span></button>
+    <button type="button" id="f-sistema" data-f="sistema" aria-pressed="false">Sistemas <span>4</span></button>
+    <button type="button" id="f-agente" data-f="agente" aria-pressed="false">Agentes de IA <span>1</span></button>
+  </nav>
+
+  <main class="list">
+
+    <article class="proj" data-cat="site" id="octavio">
+      <div class="media">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>octavio-1pi1.onrender.com</b></div><img src="img/octavio-desk.jpg" alt="Página inicial do site de Octávio Henrique, treinador: 'Treino pensado para você, não para a média'"></div>
+        <div class="phone"><img src="img/octavio-mob.jpg" alt="Versão para celular do site de Octávio Henrique"></div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag">Site</span></div>
+        <div class="sector">Personal trainer</div>
+        <h2>Octávio Henrique</h2>
+        <p class="desc">Site-portfólio para um treinador apresentar o método e os resultados, e levar o visitante direto para uma conversa no WhatsApp.</p>
+        <ul class="feat"><li>Página única e responsiva</li><li>Botão direto para o WhatsApp</li><li>Planos de treino e método</li><li>Prova social e resultados</li></ul>
+        <div class="actions"><a class="btn" href="https://octavio-1pi1.onrender.com/" target="_blank" rel="noopener">Ver site <svg><use href="#arrow"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="sistema" id="arqis">
+      <div class="media">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>arqisexpress.com</b></div><img src="img/arqis-desk.jpg" alt="Tela de acesso do sistema Arqis"></div>
+        <div class="phone"><img src="img/arqis-mob.jpg" alt="Tela de acesso do Arqis no celular"></div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag">Sistema</span><span class="tag">Gestão fiscal</span></div>
+        <div class="sector">Varejo · Mercado Gestor</div>
+        <h2>Arqis</h2>
+        <p class="desc">Sistema de gestão fiscal para o varejo: controle de estoque, emissão de notas e frente de caixa no mesmo lugar.</p>
+        <ul class="feat"><li>Controle de estoque</li><li>Emissão de NF-e</li><li>Emissão de NFC-e</li><li>PDV (frente de caixa)</li></ul>
+        <div class="actions"><a class="btn" href="https://arqisexpress.com/login" target="_blank" rel="noopener">Acessar sistema <svg><use href="#arrow"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="agente" id="tok">
+      <div class="media chatwrap">
+        <div class="chatphone">
+          <span class="demo-flag">Simulação · dados fictícios</span>
+          <div class="chat" role="img" aria-label="Simulação de conversa no WhatsApp: cliente pede um SUV automático até 120 mil e o agente da Tok Veículos envia três opções disponíveis.">
+            <div class="chat-h"><div class="av">TOK</div><div><b>Tok Veículos</b><small>online</small></div></div>
+            <div class="msgs">
+              <div class="m out">Oi! Procuro um SUV automático, até R$ 120 mil.<time>14:02</time></div>
+              <div class="m in">Olá! Sou o assistente da Tok 🚗 Encontrei 3 opções disponíveis hoje na loja:<time>14:02</time></div>
+              <div class="car"><div class="ph" style="background:#24383F;color:#7CC4BA"><svg><use href="#car"/></svg></div><div><b>Jeep Compass Longitude</b><span>2021 · automático · 54 mil km</span><br><em>R$ 118.900</em></div></div>
+              <div class="car"><div class="ph" style="background:#3A2F2A;color:#E8B48A"><svg><use href="#car"/></svg></div><div><b>Hyundai Creta Platinum</b><span>2022 · automático · 38 mil km</span><br><em>R$ 112.500</em></div></div>
+              <div class="car"><div class="ph" style="background:#2C2F3A;color:#B9C2D6"><svg><use href="#car"/></svg></div><div><b>VW T-Cross Highline</b><span>2021 · automático · 47 mil km</span><br><em>R$ 109.900</em></div></div>
+              <div class="m in">Quer ver fotos de algum deles ou agendar um test drive?<time>14:03</time></div>
+              <div class="m out">O Creta! Dá pra ver sábado?<time>14:04</time></div>
+              <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag ai">Agente de IA</span><span class="tag">WhatsApp</span></div>
+        <div class="sector">Revenda de veículos</div>
+        <h2>Tok Veículos</h2>
+        <p class="desc">Um agente que atende no WhatsApp a qualquer hora, entende o que o cliente procura e responde com os carros disponíveis no estoque.</p>
+        <ul class="feat"><li>Atendimento 24h no WhatsApp</li><li>Busca no estoque real</li><li>Filtra por preço, tipo e câmbio</li><li>Encaminha para o vendedor</li></ul>
+        <div class="actions"><span class="note">Em uso pelo cliente. A conversa ao lado é uma simulação ilustrativa.</span></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="sistema" id="petshop">
+      <div class="media">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>sistema do petshop</b></div>
+          <div class="pet" role="img" aria-label="Tela ilustrativa de login do sistema para petshop">
+            <div class="pet-l">
+              <div class="pl"><svg viewBox="0 0 24 24" fill="#F6EFE4"><ellipse cx="12" cy="16" rx="5" ry="4"/><circle cx="6" cy="10" r="2.2"/><circle cx="18" cy="10" r="2.2"/><circle cx="9.5" cy="6" r="2"/><circle cx="14.5" cy="6" r="2"/></svg>Sistema Pet</div>
+              <h3>Hotel, banho e tosa<br>e loja em um só lugar.</h3>
+              <ul><li>• Reservas do hotelzinho</li><li>• Agenda de banho e tosa</li><li>• Venda de produtos e boletos</li></ul>
+            </div>
+            <div class="pet-r">
+              <h4>Entrar</h4>
+              <div><label>E-mail</label><div class="f"></div></div>
+              <div><label>Senha</label><div class="f"></div></div>
+              <div class="b">Acessar</div>
+              <small>Esqueci minha senha</small>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag">Sistema</span><span class="tag">Multiempresa</span></div>
+        <div class="sector">Petshop · hotel, banho e tosa</div>
+        <h2>Sistema para petshop</h2>
+        <p class="desc">Gestão completa do petshop: hospedagem, serviços de estética e venda de produtos, com cobrança e avisos automáticos.</p>
+        <ul class="feat"><li>Hotelzinho para cães</li><li>Agenda de banho e tosa</li><li>Venda de produtos</li><li>Boletos via Mercado Pago</li><li>Mensagens pelo WhatsApp</li><li>Portal para liberar acessos e funções</li></ul>
+        <div class="actions"><span class="note">Tela ilustrativa.</span></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="sistema" id="coliseu">
+      <div class="media">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>coliseu-o3vi.onrender.com</b></div><img src="img/coliseu-desk.jpg" alt="Tela de acesso do Coliseu"></div>
+        <div class="phone"><img src="img/coliseu-mob.jpg" alt="Tela de acesso do Coliseu no celular"></div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag">Sistema</span><span class="tag">CRM</span></div>
+        <div class="sector">Personal trainers</div>
+        <h2>Coliseu</h2>
+        <p class="desc">CRM para personal trainers montarem e acompanharem os treinos dos alunos, com acesso individual para cada um.</p>
+        <ul class="feat"><li>Cadastro de alunos</li><li>Montagem de treinos</li><li>Acompanhamento da evolução</li><li>Acesso do aluno</li></ul>
+        <div class="actions"><a class="btn" href="https://coliseu-o3vi.onrender.com/login" target="_blank" rel="noopener">Acessar sistema <svg><use href="#arrow"/></svg></a></div>
+      </div>
+    </article>
+
+    <article class="proj" data-cat="site sistema" id="studio">
+      <div class="media">
+        <div class="browser"><div class="bar"><i></i><i></i><i></i><b>studio-lt-concept.onrender.com</b></div><img src="img/studio-desk.jpg" alt="Site de Thainá Souza, produção especializada em noivas"></div>
+        <div class="phone"><img src="img/studio-mob.jpg" alt="Site de Thainá Souza no celular"></div>
+      </div>
+      <div class="info">
+        <div class="tags"><span class="tag">Site</span><span class="tag">Sistema</span></div>
+        <div class="sector">Beleza · produção de noivas</div>
+        <h2>Studio Thainá Souza</h2>
+        <p class="desc">Site para um studio de produção de noivas, integrado a um sistema próprio de cadastro de clientes e pedidos de orçamento.</p>
+        <ul class="feat"><li>Site institucional e galeria</li><li>Pedido de orçamento online</li><li>Cadastro de clientes</li><li>Área "Minha conta"</li></ul>
+        <div class="actions"><a class="btn" href="https://studio-lt-concept.onrender.com/" target="_blank" rel="noopener">Ver site <svg><use href="#arrow"/></svg></a></div>
+      </div>
+    </article>
+
+  </main>
+
+  <section class="cta">
+    <svg class="big n"><use href="#N"/></svg>
+    <h2>O próximo pode ser o <em>seu</em> negócio.</h2>
+    <p>Agentes de IA, sites e sistemas sob medida. Conte o que trava a sua rotina e a gente desenha o caminho mais simples para resolver.</p>
+    <div class="actions"><a class="btn" href="https://instagram.com/nagare.ia" target="_blank" rel="noopener">Falar no Instagram <svg><use href="#arrow"/></svg></a><span class="handle">@nagare.ia</span></div>
+  </section>
+
+  <footer><span>nagare · Tecnologia que faz o seu negócio fluir.</span><span>@nagare.ia</span></footer>
+</div>
+
+<script>
+(function(){
+  const btns=[...document.querySelectorAll('.filters button')];
+  const items=[...document.querySelectorAll('.proj')];
+  function apply(f){
+    btns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.f===f)));
+    items.forEach(it=>{ it.hidden = !(f==='todos' || it.dataset.cat.split(' ').includes(f)); });
+    try{ localStorage.setItem('nagare-filtro', f); }catch(e){}
+  }
+  btns.forEach(b=>b.addEventListener('click',()=>apply(b.dataset.f)));
+  let saved='todos'; try{ saved=localStorage.getItem('nagare-filtro')||'todos'; }catch(e){}
+  if(!btns.some(b=>b.dataset.f===saved)) saved='todos';
+  apply(saved);
+})();
+</script>
+
+</body>
+</html>
